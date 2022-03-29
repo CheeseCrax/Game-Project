@@ -1,0 +1,5 @@
+C:\Users\Kusuriuri\Documents\Projects\FPS_PROJECT\.mono\temp\obj\Debug\FPS_GAME.csproj.AssemblyReference.cache
+C:\Users\Kusuriuri\Documents\Projects\FPS_PROJECT\.mono\temp\obj\Debug\FPS_GAME.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kusuriuri\Documents\Projects\FPS_PROJECT\.mono\temp\obj\Debug\FPS_GAME.AssemblyInfoInputs.cache
+C:\Users\Kusuriuri\Documents\Projects\FPS_PROJECT\.mono\temp\obj\Debug\FPS_GAME.AssemblyInfo.cs
+C:\Users\Kusuriuri\Documents\Projects\FPS_PROJECT\.mono\temp\obj\Debug\FPS_GAME.csproj.CoreCompileInputs.cache

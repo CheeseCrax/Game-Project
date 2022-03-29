@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "I9dWDu+hqRgk+owtXpQk6q+mhdYvs7hC/ofnB0F3SUGNmkZz6Sa3CX6Qtfi2KtbxuyNukOhrSw98tHXc/OKVOA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Kusuriuri\\Documents\\Projects\\FPS_PROJECT\\FPS_GAME.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Kusuriuri\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.2\\microsoft.netframework.referenceassemblies.1.0.2.nupkg.sha512",
+    "C:\\Users\\Kusuriuri\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net472\\1.0.2\\microsoft.netframework.referenceassemblies.net472.1.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
