@@ -16,9 +16,6 @@ public class Player : KinematicBody
 	public Vector3 velocity;
 	public int camera_x_rotation = 0;
 	public Basis head_basis;
-	// Declare member variables here. Examples:
-	// private int a = 2;
-	// private string b = "text";
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -59,7 +56,6 @@ public class Player : KinematicBody
 		camera = head.GetNode<Godot.Camera>("Camera");
 		head_basis = head.GlobalTransform.basis;
 
-		//head_basis = this.GetNode<Godot.Spatial>("Head");
 		direction = startDirection;
 		if (Input.IsActionPressed("move_forward"))
 		{
