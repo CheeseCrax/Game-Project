@@ -6,11 +6,15 @@ public class Player : KinematicBody
 	
 	public int speed = 10;
 	public int acceleration = 5;
-	public float gravity = 0.98;
+	public double gravity = 0.98;
 	public int jump_power = 30;
-	
-	
-	
+	public double mouse_sensitivity = 0.3;
+	public Spatial head;
+	public Camera camera;
+	public Vector3 direction;
+	public Vector3 velocity;
+	public int camera_x_rotation = 0;
+	public Basis head_basis;
 	// Declare member variables here. Examples:
 	// private int a = 2;
 	// private string b = "text";
@@ -18,22 +22,68 @@ public class Player : KinematicBody
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		var head = this.GetNode<Godot.Spatial>("Head");
-		var camera = this.GetNode<Godot.Camera>("Camera");
+		Input.SetMouseMode(Input.MouseMode.Captured);
+		head = this.GetNode<Godot.Spatial>("Head");
+		camera = head.GetNode<Godot.Camera>("Camera");
 	}
 
-	public void _Physics_Process(float delta)
+	public override void _Input(InputEvent @event)
 	{
-		var head_basis = head.get_global_transform().basis;
-		var direction;
-		if (Input.IsActionJustPressed("move_forward"))
+		if (@event is InputEventMouseMotion eventMouseMotion)
 		{
-			direction -= head_basis.z;
+			head.RotateY(Convert.ToSingle((-eventMouseMotion.Relative.x * mouse_sensitivity) * (Math.PI / 180)));
+
+			var x_delta = eventMouseMotion.Relative.y * mouse_sensitivity;
+			if (camera_x_rotation + x_delta > -90 && camera_x_rotation + x_delta < 90) 
+			{
+				camera.RotateX(Convert.ToSingle((-x_delta) * (Math.PI / 180)));
+				camera_x_rotation += Convert.ToInt16(x_delta);
+			}
+			
 		}
 	}
+
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
- 	public override void _Process(float delta)
+	public override void _Process(float delta)
+	{
+		if (Input.IsActionJustPressed("ui_cancel"))
+		{
+			Input.SetMouseMode(Input.MouseMode.Visible);
+		}
+	}
+ 	public override void _PhysicsProcess(float delta)
  	{
-		 GD.Print("HI");
+
+		head = this.GetNode<Godot.Spatial>("Head");
+		camera = head.GetNode<Godot.Camera>("Camera");
+		head_basis = head.GlobalTransform.basis;
+
+		//head_basis = this.GetNode<Godot.Spatial>("Head");
+
+		if (Input.IsActionPressed("move_forward"))
+		{
+			direction -= head_basis.z;
+		}else if (Input.IsActionPressed("move_backward"))
+		{
+			direction += head_basis.z;
+		}else if (Input.IsActionPressed("move_left"))
+		{
+			direction -= head_basis.x;
+		}else if (Input.IsActionPressed("move_right"))
+		{
+			direction += head_basis.x;
+		}
+
+		direction = direction.Normalized();
+
+		velocity = velocity.LinearInterpolate(direction * speed, acceleration * delta);
+		velocity.y -= Convert.ToSingle(gravity);
+
+		if (Input.IsActionJustPressed("jump") && IsOnFloor())
+		{
+			velocity.y += Convert.ToSingle(jump_power);
+		}
+
+		velocity = MoveAndSlide(velocity, Vector3.Up, false, 4, Convert.ToSingle(0.785385), false);
 	}
 }
