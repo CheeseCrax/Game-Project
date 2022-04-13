@@ -11,6 +11,7 @@ public class Player : KinematicBody
 	public double mouse_sensitivity = 0.3;
 	public Spatial head;
 	public Camera camera;
+	public Vector3 startDirection;
 	public Vector3 direction;
 	public Vector3 velocity;
 	public int camera_x_rotation = 0;
@@ -59,7 +60,7 @@ public class Player : KinematicBody
 		head_basis = head.GlobalTransform.basis;
 
 		//head_basis = this.GetNode<Godot.Spatial>("Head");
-
+		direction = startDirection;
 		if (Input.IsActionPressed("move_forward"))
 		{
 			direction -= head_basis.z;
