@@ -1,1 +1,1 @@
-{"res://Player/Player.cs":{"modified_time":"1649876174","class":{"namespace":"","class_name":"Player","nested":false}}}
+{"res://Player/Shotgun.cs":{"modified_time":"1650421811","class":{"namespace":"","class_name":"Shotgun","nested":false}},"res://Player/Weapon.cs":{"modified_time":"1650433255","class":{"namespace":"","class_name":"Weapon","nested":false}},"res://Player/Player.cs":{"modified_time":"1650442652","class":{"namespace":"","class_name":"Player","nested":false}}}
